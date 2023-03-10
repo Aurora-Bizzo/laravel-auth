@@ -24,7 +24,7 @@
         public function rules()
         {
             return [
-                'title' => ['required', 'unique:project', 'max:150'],
+                'title' => ['required', 'unique:projects', 'max:150'],
                 'content' => ['nullable'],
                 'date_project' => ['nullable','date_format:Y-m-d'],
             ];

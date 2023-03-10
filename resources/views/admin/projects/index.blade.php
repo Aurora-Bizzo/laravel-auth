@@ -9,11 +9,6 @@
                 <div>
                     <a href="{{route('admin.projects.create')}}" class="btn btn-sm btn-primary">Add Project</a>
                 </div>
-                @if(session('message'))
-                    <div class="alert alert-success">
-                        {{session['message']}}
-                    </div>
-                @endif
             </div>
         </div>
         <div class="row">

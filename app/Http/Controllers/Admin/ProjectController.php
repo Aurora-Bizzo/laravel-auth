@@ -40,7 +40,7 @@
         public function store(StoreProjectRequest $request)
         {
             $form_data = $request->validated();
-            $slug = Post::generateSlug($request->title, '-');
+            $slug = Project::generateSlug($request->title, '-');
             $form_data['slug'] = $slug;
 
             $newProject = new Project();
