@@ -40,10 +40,14 @@
         public function store(StoreProjectRequest $request)
         {
             $form_data = $request->validated();
-            $slug = Project::generateSlug($request->title, '-');
+            $slug = Post::generateSlug($request->title, '-');
             $form_data['slug'] = $slug;
-            $newProj = Project::create($form_data);
-            return redirect()->route('admin.projects.index')->with('message', 'Il project è stato creato correttamente');
+
+            $newProject = new Project();
+            $newProject->fill($form_data);
+            $newProject->save();
+
+            return redirect()->route('admin.projects.index')->with('message','Project created');
         }
 
         /**
@@ -54,7 +58,7 @@
          */
         public function show(Project $project)
         {
-            return view('admin.projects.show', compact('project'));
+            //
         }
 
         /**
@@ -65,7 +69,7 @@
          */
         public function edit(Project $project)
         {
-            return view('admin.projects.edit', compact('project'));
+            //
         }
 
         /**
@@ -77,11 +81,7 @@
          */
         public function update(UpdateProjectRequest $request, Project $project)
         {
-            $form_data = $request->validated();
-            $slug = Project::generateSlug($request->title, '-');
-            $form_data['slug'] = $slug;
-            $project->update($form_data);
-            return redirect()->route('admin.projects.index')->with('message', 'La modifica del project '.$project->title.' è andata a buon fine.');
+            //
         }
 
         /**
@@ -92,8 +92,7 @@
          */
         public function destroy(Project $project)
         {
-            $project->delete();
-            return redirect()->route('admin.projects.index')->with('message', 'La cancellazione del project '.$project->title.' è andata a buon fine.');
+            //
         }
     }
 ?>

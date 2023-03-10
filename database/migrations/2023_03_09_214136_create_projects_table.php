@@ -18,6 +18,7 @@
                 $table->string('title', 150)->unique();
                 $table->text('content')->nullable();
                 $table->string('slug');
+                $table->date('date_project')->nullable();
                 $table->timestamps();
             });
         }

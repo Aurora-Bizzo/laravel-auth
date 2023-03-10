@@ -4,6 +4,7 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Admin\DashboardController as DashboardController;
     use App\Http\Controllers\Admin\ProjectController as ProjectController;
+
     /*
     |--------------------------------------------------------------------------
     | Web Routes
@@ -19,8 +20,8 @@
         return view('welcome');
     });
 
-    Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
     });
 
