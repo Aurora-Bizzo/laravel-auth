@@ -29,5 +29,14 @@
                 'date_project' => ['nullable','date_format:Y-m-d'],
             ];
         }
+
+        public function messages()
+        {
+            return [
+                'title.require' => 'A title is required',
+                'title.unique' => 'There is another project with this title',
+                'title.max' => 'The title cannot be longer than 150 characters',
+            ];
+        }
     }
 ?>
